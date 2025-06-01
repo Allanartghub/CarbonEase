@@ -55,7 +55,7 @@
       text-align: center;
       background: rgba(0, 39, 77, 0.80); /* 80% opacity for header */
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
     header::before {
       content: "";
@@ -136,7 +136,7 @@
         flex-direction: column;
         gap: 0.7rem;
         margin-bottom: 1.2rem;
-        background: rgba(0, 39, 77, 0.97);
+        background: #00274d;
         position: absolute;
         top: 100%;
         left: 0;
@@ -146,6 +146,7 @@
         box-shadow: 0 8px 32px rgba(0,0,0,0.13);
         border-radius: 0 0 18px 18px;
         transition: max-height 0.3s;
+        z-index: 1001; /* Ensure nav is above all content */
       }
       nav.open {
         max-height: 400px;
@@ -159,6 +160,7 @@
       }
       header {
         position: relative;
+        z-index: 1000;
       }
     }
     @media (max-width: 480px) {
@@ -386,40 +388,31 @@
         flex-direction: column;
         gap: 0.7rem;
         margin-bottom: 1.2rem;
+        background: #00274d;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw;
+        max-height: 0;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+        border-radius: 0 0 18px 18px;
+        transition: max-height 0.3s;
+        z-index: 1001; /* Ensure nav is above all content */
       }
-      .cta-btn {
-        font-size: 1rem;
-        padding: 0.7rem 1.5rem;
-        margin-top: 1rem;
+      nav.open {
+        max-height: 400px;
+        padding-bottom: 1rem;
       }
-      main {
-        padding: 1.2rem 0.2rem 1rem 0.2rem;
-      }
-      section {
-        padding: 1.2rem 0.7rem;
-        margin-bottom: 2rem;
-      }
-      .targets, .impacts, .sdg-partners, .testimonials {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .target-box, .impact-box, .sdg-card, .partner-card, .testimonial {
-        min-width: unset;
+      nav a {
+        font-size: 1.05rem;
+        padding: 0.7rem 0.5rem;
         width: 100%;
-        margin-bottom: 0.7rem;
+        text-align: center;
       }
-      .about-text {
-        font-size: 1rem;
-      }
-      .section-title {
-        font-size: 1.2rem;
-      }
-      .sdg-icon, .partner-logo {
-        width: 38px;
-        height: 38px;
-      }
-      form {
-        max-width: 100% !important;
+      header {
+        position: relative;
+        z-index: 1000;
       }
     }
     @media (max-width: 480px) {
@@ -483,9 +476,10 @@
       <span style="font-variant: small-caps; font-size:0.9em;">Carbon</span>EASE
     </div>
     <div class="subtitle">Empowering Sustainable Futures, One Carbon Credit at a Time</div>
-    <button class="nav-toggle" aria-label="Toggle navigation" id="navToggle">
+    <button class="nav-toggle" aria-label="Toggle navigation" id="navToggle" aria-controls="mainNav" aria-expanded="false">
       &#9776;
     </button>
+    
     <nav id="mainNav">
       <a href="index.html">Home</a>
       <a href="Who we are.html">Who we are</a>
@@ -494,6 +488,7 @@
       <a href="news.html">News and Events</a>
       <a href="contact.html">Contact</a>
     </nav>
+
     <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
       Get Involved
     </button>
@@ -648,8 +643,10 @@
     &copy; 2024 CarbonEase. All rights reserved.<br>
     <span style="font-size:1.08rem; color:#b7e4c7; letter-spacing:1px;">Empowering Kenya's Climate Champions</span>
   </footer>
-  <script>
-    // Animated counters for targets and impacts
+  
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate counters when visible
     function animateCounters(selector, duration = 1800) {
       document.querySelectorAll(selector).forEach(el => {
         const target = +el.getAttribute('data-count');
@@ -668,7 +665,7 @@
         update();
       });
     }
-    // Animate on scroll into view
+
     function onVisible(element, callback) {
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
@@ -680,68 +677,56 @@
       }, { threshold: 0.3 });
       observer.observe(element);
     }
-    document.addEventListener('DOMContentLoaded', () => {
-      // Animate targets
-      onVisible(document.getElementById('targets'), () => animateCounters('.target-value'));
-      // Animate impacts
-      onVisible(document.getElementById('impact'), () => animateCounters('.impact-value'));
-      // Animate sections fade-in
-      document.querySelectorAll('section').forEach(sec => {
-        sec.style.opacity = 0;
-        sec.style.transform = 'translateY(40px)';
-        onVisible(sec, () => {
-          sec.style.transition = 'opacity 0.8s, transform 0.8s';
-          sec.style.opacity = 1;
-          sec.style.transform = 'translateY(0)';
-        });
-      });
-      // Form submit (demo only)
-      document.querySelector('form').addEventListener('submit', e => {
-        e.preventDefault();
-        alert('Thank you for reaching out to CarbonEASE!');
-        e.target.reset();
-      });
 
-      // Hamburger nav toggle (ensure only one handler and no duplicate code)
-      const navToggle = document.getElementById('navToggle');
-      const mainNav = document.getElementById('mainNav');
+    // Animate counters and sections
+    onVisible(document.getElementById('targets'), () => animateCounters('.target-value'));
+    onVisible(document.getElementById('impact'), () => animateCounters('.impact-value'));
 
-      navToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        mainNav.classList.toggle('open');
-      });
-
-      // Close nav on link click (mobile)
-      mainNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mainNav.classList.remove('open');
-        });
-      });
-
-      // Close nav if clicking outside nav when open (mobile)
-      document.addEventListener('click', function(e) {
-        if (
-          mainNav.classList.contains('open') &&
-          !mainNav.contains(e.target) &&
-          e.target !== navToggle
-        ) {
-          mainNav.classList.remove('open');
-        }
+    document.querySelectorAll('section').forEach(sec => {
+      sec.style.opacity = 0;
+      sec.style.transform = 'translateY(40px)';
+      onVisible(sec, () => {
+        sec.style.transition = 'opacity 0.8s, transform 0.8s';
+        sec.style.opacity = 1;
+        sec.style.transform = 'translateY(0)';
       });
     });
-    // Hamburger nav toggle
-    function toggleNav() {
-      var nav = document.getElementById('mainNav');
-      nav.classList.toggle('open');
-    }
-    // Close nav on link click (mobile)
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', () => {
-          document.getElementById('mainNav').classList.remove('open');
-        });
+
+    // Form alert
+    document.querySelector('form').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thank you for reaching out to CarbonEASE!');
+      e.target.reset();
+    });
+
+    // Nav Toggle (Mobile)
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    navToggle.addEventListener('click', function () {
+      const expanded = mainNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', expanded);
+    });
+
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', false);
       });
     });
-  </script>
+
+    document.addEventListener('click', function (e) {
+      if (
+        mainNav.classList.contains('open') &&
+        !mainNav.contains(e.target) &&
+        e.target !== navToggle
+      ) {
+        mainNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', false);
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
