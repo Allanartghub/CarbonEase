@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | CarbonEase</title>
+    <!-- Link to home page CSS for consistent design -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Google Fonts Poppins if used in home.html -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
+    <style>
+        /* Minimal inline styles for About Us page */
+        body {
+            background: #f4f8f7;
+            color: #222;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 950px;
+            margin: 80px auto 0 auto;
+            padding: 32px 24px 24px 24px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        }
+        h1, h2, h3 {
+            color: #1a7f5a;
+            margin-top: 0;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        .values-list {
+            list-style: none;
+            padding: 0;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        .values-list li {
+            margin-bottom: 8px;
+            padding-left: 1.2em;
+            position: relative;
+        }
+        .values-list li:before {
+            content: "•";
+            color: #1a7f5a;
+            position: absolute;
+            left: 0;
+        }
+        .team-section {
+            margin-top: 40px;
+        }
+        .team-member {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 32px;
+            background: #f7faf9;
+            border-radius: 10px;
+            padding: 18px 18px 12px 18px;
+            box-shadow: 0 2px 8px rgba(26,127,90,0.04);
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        .team-member img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 24px;
+            background: #e0e0e0;
+        }
+        .team-info {
+            flex: 1;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        .team-info h4 {
+            margin: 0 0 4px 0;
+            color: #1a7f5a;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        .team-info .role {
+            font-weight: 500;
+            color: #444;
+            margin-bottom: 8px;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        .team-info .bio {
+            margin-bottom: 8px;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        .team-info .quote {
+            font-style: italic;
+            color: #555;
+            border-left: 3px solid #1a7f5a;
+            padding-left: 12px;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        footer {
+            margin-top: 48px;
+            background: rgba(0, 39, 77, 0.80);
+            color: #fff;
+            text-align: center;
+            padding: 32px 0 18px 0;
+            border-radius: 0 0 16px 16px;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        header {
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(0, 39, 77, 0.80); /* 80% opacity for header */
+            position: relative;
+            overflow: hidden;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: -100px; left: -100px; right: -100px; bottom: -100px;
+            background: radial-gradient(circle at 70% 30%, var(--green-accent, #1a7f5a) 0%, transparent 60%);
+            opacity: 0.15;
+            z-index: 0;
+        }
+        header .logo {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #fff;
+            z-index: 1;
+            margin-bottom: 0.2em;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        header .subtitle {
+            color: #e0f7ef;
+            font-size: 1.15em;
+            margin-bottom: 1.2em;
+            z-index: 1;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        header nav {
+            z-index: 1;
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.08em;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: border 0.2s;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        header nav a.active,
+        header nav a:hover {
+            border-bottom: 2px solid #1a7f5a;
+        }
+        @media (max-width: 700px) {
+            header { min-height: 28vh; }
+            header .logo { font-size: 1.3em; }
+            header nav { gap: 14px; font-size: 0.98em; }
+            .container { padding: 12px; }
+            .team-member { flex-direction: column; align-items: flex-start; }
+            .team-member img { margin-bottom: 12px; margin-right: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span style="font-variant: small-caps; font-size:0.9em;">Carbon</span>EASE
+        </div>
+        <div class="subtitle">Empowering Sustainable Futures, One Carbon Credit at a Time</div>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="who-we-are.html" class="active">Who we are</a>
+            <a href="impact.html">Make an Impact</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="news.html">News and Events</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Who We Are</h1>
+        <p>
+            At CarbonEase, we are dedicated to fostering a sustainable future through innovative carbon credit solutions. Our team is passionate about making a positive impact on the environment and empowering individuals and organizations to take meaningful action against climate change.
+        </p>
+        <h2>Our Mission</h2>
+        <p>
+            Our mission is to provide transparent, effective, and accessible carbon credit programs that promote sustainability and help offset carbon footprints globally.
+        </p>
+        <h2>Our Values</h2>
+        <ul class="values-list">
+            <li><strong>Integrity:</strong> We operate with transparency and honesty.</li>
+            <li><strong>Innovation:</strong> We continually seek new solutions to environmental challenges.</li>
+            <li><strong>Collaboration:</strong> We believe in the power of partnerships to achieve greater impact.</li>
+            <li><strong>Responsibility:</strong> We take ownership of our actions and their effects on the planet.</li>
+        </ul>
+
+        <div class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-member">
+                <!-- Placeholder image, replace src with actual photo if available -->
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQHHrGwThLCy_Q/profile-displayphoto-shrink_400_400/B4DZcjBYR9GYAg-/0/1748639254459?e=1753920000&v=beta&t=D6BrcLdVYs0yhyWQdFfJlOdoOMkt2SQsXZ7xqqkXl38" alt="Allan Ng'ang'a">
+                <div class="team-info">
+                    <h4>Allan Ng'ang'a</h4>
+                    <div class="role">Founder &amp; CEO</div>
+                    <div class="bio">
+                        Allan holds an MSc and is a product manager and sustainability investment advocate. A classic car enthusiast, he also founded Classic Connect, a community for classic car lovers to meet, interact, and share ideas. He believes in the transformative power of community.
+                    </div>
+                    <div class="quote">
+                        "Cars are not just machines; they are a connection to history and community."
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQGbzcuRqJaRDw/profile-displayphoto-shrink_100_100/B4DZOxEmXWHgAY-/0/1733842594085?e=1753920000&v=beta&t=oC4T5ygOVPh-pO5Sd7CRqKW-uIDhbxVXvtYrCJsCXHc" alt="Hope Diane Okeyo">
+                <div class="team-info">
+                    <h4>Hope Diane Okeyo</h4>
+                    <div class="role">Data Analyst &amp; Sustainability Consultant</div>
+                    <div class="bio">
+                        Hope holds an MSc and has over 2 years of experience as a data analyst. She's a creative soul who loves designing posters, singing, and traveling. Passionate about giving back to society, she enjoys cooking and creating engaging content. Hope also loves camping and watching sunrises in beautiful places, embracing nature's beauty.
+                    </div>
+                    <div class="quote">
+                        "The greatest threat to our planet is the belief that someone would save it."
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="https://media.licdn.com/dms/image/v2/C4D03AQETphZHgzg-WQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1616993925963?e=1753920000&v=beta&t=C8GfdaB50_80qA60ve1Qg8QadZnnavil2z833G7T_Xo" alt="Isaac Kuttoh">
+                <div class="team-info">
+                    <h4>Isaac Kuttoh</h4>
+                    <div class="role">Chief Technical Officer</div>
+                    <div class="bio">
+                        A passionate software engineer, Isaac loves hiking and chasing sunsets. An adventurous spirit, he often spends weekends exploring forests. As a car enthusiast and speed freak, he brings energy and a sense of humor to the team.
+                    </div>
+                    <div class="quote">
+                        "Life is about the journey; I prefer mine with a view."
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQEzQ3A089tDHg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1677686577715?e=1753920000&v=beta&t=g5qnvWapjXD21jnrGhkSGVjsXr97TvWr4pKXi5XnUjQ" alt="Angela Muriithi">
+                <div class="team-info">
+                    <h4>Angela Muriithi</h4>
+                    <div class="role">Coordinator &amp; HR</div>
+                    <div class="bio">
+                        Angela brings over 3 years of human resource management experience to our team. As the social butterfly, she organizes team events and enjoys Kenyan music. An extrovert at heart, Angela loves to travel and explore different cultures.
+                    </div>
+                    <div class="quote">
+                        "Community is at the heart of everything we do; let’s celebrate it!"
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="https://static.wikia.nocookie.net/succession/images/f/f2/LoganRoyCharacterInfobox.jpg/revision/latest?cb=20230613094149" alt="Kamere Mbugua">
+                <div class="team-info">
+                    <h4>Kamere Mbugua <span style="font-size:0.9em;color:#888;">(Nickname: 1%)</span></h4>
+                    <div class="role">Investor</div>
+                    <div class="bio">
+                        Kamere is the visionary investor who believed in our idea and helped establish CarbonEase. He is passionate about sustainable agriculture and empowering future generations. An avid barbecue host, he loves bringing friends and family together.
+                    </div>
+                    <div class="quote">
+                        "The Future is real. The past is all made up. Or sometimes I forget that I am actually rich."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h3>Stay Connected</h3>
+        <p>Follow us on social media and subscribe to our newsletter for updates on sustainability and carbon credits.</p>
+        <!-- ...add social icons/links as needed... -->
+        <div style="margin-top:12px;font-size:0.95em;">&copy; 2024 CarbonEase. All rights reserved.</div>
+    </footer>
+</body>
+</html>
