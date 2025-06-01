@@ -483,7 +483,7 @@
       <span style="font-variant: small-caps; font-size:0.9em;">Carbon</span>EASE
     </div>
     <div class="subtitle">Empowering Sustainable Futures, One Carbon Credit at a Time</div>
-    <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+    <button class="nav-toggle" aria-label="Toggle navigation" id="navToggle">
       &#9776;
     </button>
     <nav id="mainNav">
@@ -700,6 +700,28 @@
         e.preventDefault();
         alert('Thank you for reaching out to CarbonEASE!');
         e.target.reset();
+      });
+
+      // Hamburger nav toggle
+      document.getElementById('navToggle').addEventListener('click', function(e) {
+        e.stopPropagation();
+        document.getElementById('mainNav').classList.toggle('open');
+      });
+
+      // Close nav on link click (mobile)
+      document.querySelectorAll('#mainNav a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.getElementById('mainNav').classList.remove('open');
+        });
+      });
+
+      // Optional: close nav if clicking outside nav when open (mobile)
+      document.addEventListener('click', function(e) {
+        var nav = document.getElementById('mainNav');
+        var toggle = document.getElementById('navToggle');
+        if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== toggle) {
+          nav.classList.remove('open');
+        }
       });
     });
     // Hamburger nav toggle
