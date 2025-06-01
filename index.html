@@ -702,25 +702,30 @@
         e.target.reset();
       });
 
-      // Hamburger nav toggle
-      document.getElementById('navToggle').addEventListener('click', function(e) {
+      // Hamburger nav toggle (ensure only one handler and no duplicate code)
+      const navToggle = document.getElementById('navToggle');
+      const mainNav = document.getElementById('mainNav');
+
+      navToggle.addEventListener('click', function(e) {
         e.stopPropagation();
-        document.getElementById('mainNav').classList.toggle('open');
+        mainNav.classList.toggle('open');
       });
 
       // Close nav on link click (mobile)
-      document.querySelectorAll('#mainNav a').forEach(link => {
+      mainNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-          document.getElementById('mainNav').classList.remove('open');
+          mainNav.classList.remove('open');
         });
       });
 
-      // Optional: close nav if clicking outside nav when open (mobile)
+      // Close nav if clicking outside nav when open (mobile)
       document.addEventListener('click', function(e) {
-        var nav = document.getElementById('mainNav');
-        var toggle = document.getElementById('navToggle');
-        if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== toggle) {
-          nav.classList.remove('open');
+        if (
+          mainNav.classList.contains('open') &&
+          !mainNav.contains(e.target) &&
+          e.target !== navToggle
+        ) {
+          mainNav.classList.remove('open');
         }
       });
     });
