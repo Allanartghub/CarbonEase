@@ -307,6 +307,106 @@
       from { opacity: 0; transform: translateY(40px);}
       to { opacity: 1; transform: translateY(0);}
     }
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      main {
+        padding: 2rem 0.5rem 1.5rem 0.5rem;
+      }
+      .targets, .impacts, .sdg-partners, .testimonials {
+        gap: 1.2rem;
+      }
+      .target-box, .impact-box, .sdg-card, .partner-card, .testimonial {
+        min-width: 170px;
+        padding: 1.1rem 0.7rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+    @media (max-width: 700px) {
+      header {
+        min-height: 30vh;
+        padding: 1.2rem 0.5rem;
+      }
+      .logo {
+        font-size: 2rem;
+      }
+      .subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+      }
+      nav {
+        flex-direction: column;
+        gap: 0.7rem;
+        margin-bottom: 1.2rem;
+      }
+      .cta-btn {
+        font-size: 1rem;
+        padding: 0.7rem 1.5rem;
+        margin-top: 1rem;
+      }
+      main {
+        padding: 1.2rem 0.2rem 1rem 0.2rem;
+      }
+      section {
+        padding: 1.2rem 0.7rem;
+        margin-bottom: 2rem;
+      }
+      .targets, .impacts, .sdg-partners, .testimonials {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .target-box, .impact-box, .sdg-card, .partner-card, .testimonial {
+        min-width: unset;
+        width: 100%;
+        margin-bottom: 0.7rem;
+      }
+      .about-text {
+        font-size: 1rem;
+      }
+      .section-title {
+        font-size: 1.2rem;
+      }
+      .sdg-icon, .partner-logo {
+        width: 38px;
+        height: 38px;
+      }
+      form {
+        max-width: 100% !important;
+      }
+    }
+    @media (max-width: 480px) {
+      html, body {
+        font-size: 15px;
+      }
+      .logo {
+        font-size: 1.3rem;
+      }
+      .section-title {
+        font-size: 1rem;
+      }
+      .target-value, .impact-value {
+        font-size: 1.3rem;
+      }
+      .target-title, .impact-title, .partner-title, .sdg-title {
+        font-size: 0.95rem;
+      }
+      .about-text, .target-desc, .impact-desc {
+        font-size: 0.95rem;
+      }
+      .sdg-icon, .partner-logo {
+        width: 28px;
+        height: 28px;
+      }
+      .cta-btn {
+        font-size: 0.95rem;
+        padding: 0.6rem 1.1rem;
+      }
+      footer {
+        font-size: 0.95rem;
+        padding: 0.7rem 0 0.7rem 0;
+      }
+    }
   </style>
 </head>
 <body>
