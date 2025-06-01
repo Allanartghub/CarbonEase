@@ -10,6 +10,7 @@
             background: rgba(0, 39, 77, 0.80);
             box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
             padding: 0.5rem 0;
+            position: relative;
         }
         .navbar-container {
             max-width: 1100px;
@@ -17,6 +18,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: relative;
         }
         .navbar-logo {
             color: #fff;
@@ -30,6 +32,8 @@
             display: flex;
             gap: 1.5rem;
             padding-right: 1.2rem;
+            align-items: center;
+            transition: max-height 0.3s;
         }
         .navbar-links a {
             color: #fff;
@@ -38,11 +42,75 @@
             padding: 0.5rem 1rem;
             border-radius: 4px;
             transition: background 0.2s, color 0.2s;
+            display: inline-block;
         }
         .navbar-links a:hover,
         .navbar-links .active {
             background: rgba(0, 39, 77, 0.80);  
             color: #fff;
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #43e97b;
+            cursor: pointer;
+            position: absolute;
+            right: 1.2rem;
+            top: 0.5rem;
+            z-index: 10;
+            padding: 0.2em 0.5em;
+        }
+        /* Responsive styles */
+        @media (max-width: 900px) {
+            .container { padding: 1rem; }
+            .navbar-container { max-width: 100%; }
+        }
+        @media (max-width: 700px) {
+            .navbar-logo {
+                font-size: 1.1rem;
+                padding-left: 0.7rem;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .navbar-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                background: rgba(0, 39, 77, 0.97);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100vw;
+                max-height: 0;
+                overflow: hidden;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+                border-radius: 0 0 12px 12px;
+                padding-right: 0;
+                transition: max-height 0.3s;
+                z-index: 9;
+            }
+            .navbar-links.open {
+                max-height: 350px;
+                padding-bottom: 1rem;
+            }
+            .navbar-links a {
+                font-size: 1rem;
+                padding: 0.7rem 1.2rem;
+                width: 100%;
+                text-align: left;
+            }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0.5rem; }
+            header { padding: 1.2rem 0.5rem; }
+            h1 { font-size: 1.3rem; }
+            h2 { font-size: 1.1rem; }
+            .navbar-logo { font-size: 0.95rem; }
+            .nav-toggle { font-size: 1.4rem; right: 0.5rem; top: 0.3rem; }
+            .navbar-links a { font-size: 0.98rem; padding: 0.6rem 0.8rem; }
         }
         header { background: rgba(0, 39, 77, 0.80); color: #fff; padding: 2rem 1rem; text-align: center; }
         .container { max-width: 900px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 8px; }
@@ -69,7 +137,8 @@
     <nav>
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">CarbonEase</a>
-            <div class="navbar-links">
+            <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">&#9776;</button>
+            <div class="navbar-links" id="navbarLinks">
                 <a href="index.html">Home</a>
                 <a href="Who we are.html">Who We Are</a>
                 <a href="impact.html">Impact</a>
@@ -193,6 +262,17 @@
             index = (index === items.length - 1) ? 0 : index + 1;
             updateCarousel();
         }, 6000);
+
+        // Hamburger nav toggle
+        function toggleNav() {
+            document.getElementById('navbarLinks').classList.toggle('open');
+        }
+        // Close nav on link click (mobile)
+        document.querySelectorAll('.navbar-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navbarLinks').classList.remove('open');
+            });
+        });
     </script>
     <footer style="background: rgba(0, 39, 77, 0.80); color: #fff; text-align: center; padding: 1.2rem 0 1rem 0; margin-top: 2rem; font-size: 1rem; letter-spacing: 0.5px;">
         &copy; 2024 CarbonEase. All rights reserved.<br>
