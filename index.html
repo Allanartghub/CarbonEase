@@ -92,6 +92,9 @@
       margin-bottom: 2.5rem;
       z-index: 1;
       animation: fadeInDown 2s;
+      align-items: center;
+      justify-content: center;
+      transition: max-height 0.3s;
     }
     nav a {
       color: var(--white);
@@ -101,29 +104,73 @@
       padding: 0.5rem 1rem;
       border-radius: 20px;
       transition: background 0.2s, color 0.2s;
+      display: inline-block;
     }
     nav a:hover {
       background: var(--green-accent);
       color: var(--green-dark);
     }
-    .cta-btn {
-      background: linear-gradient(90deg, var(--green-accent), var(--blue-accent));
-      color: var(--green-dark);
-      font-weight: 700;
-      font-size: 1.1rem;
+    .nav-toggle {
+      display: none;
+      background: none;
       border: none;
-      border-radius: 30px;
-      padding: 0.9rem 2.2rem;
-      margin-top: 1.5rem;
+      font-size: 2rem;
+      color: var(--green-accent);
       cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s, box-shadow 0.2s;
-      z-index: 1;
-      animation: fadeInUp 2s;
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 10;
+      padding: 0.2em 0.5em;
     }
-    .cta-btn:hover {
-      transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 8px 32px rgba(67,233,123,0.18);
+    @media (max-width: 900px) {
+      nav {
+        gap: 1.2rem;
+      }
+    }
+    @media (max-width: 700px) {
+      .nav-toggle {
+        display: block;
+      }
+      nav {
+        flex-direction: column;
+        gap: 0.7rem;
+        margin-bottom: 1.2rem;
+        background: rgba(0, 39, 77, 0.97);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw;
+        max-height: 0;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+        border-radius: 0 0 18px 18px;
+        transition: max-height 0.3s;
+      }
+      nav.open {
+        max-height: 400px;
+        padding-bottom: 1rem;
+      }
+      nav a {
+        font-size: 1.05rem;
+        padding: 0.7rem 0.5rem;
+        width: 100%;
+        text-align: center;
+      }
+      header {
+        position: relative;
+      }
+    }
+    @media (max-width: 480px) {
+      .nav-toggle {
+        font-size: 1.5rem;
+        top: 0.7rem;
+        right: 0.7rem;
+      }
+      nav a {
+        font-size: 0.98rem;
+        padding: 0.6rem 0.2rem;
+      }
     }
     main {
       max-width: 1100px;
@@ -378,33 +425,48 @@
     @media (max-width: 480px) {
       html, body {
         font-size: 15px;
+        overflow-x: hidden;
       }
       .logo {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
       }
       .section-title {
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
       .target-value, .impact-value {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
       }
       .target-title, .impact-title, .partner-title, .sdg-title {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
       .about-text, .target-desc, .impact-desc {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
       .sdg-icon, .partner-logo {
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
       }
       .cta-btn {
-        font-size: 0.95rem;
-        padding: 0.6rem 1.1rem;
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
       }
       footer {
-        font-size: 0.95rem;
-        padding: 0.7rem 0 0.7rem 0;
+        font-size: 0.9rem;
+        padding: 0.5rem 0 0.5rem 0;
+      }
+      .target-box, .impact-box, .sdg-card, .partner-card, .testimonial {
+        min-width: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box;
+        padding: 0.7rem 0.3rem;
+      }
+      form {
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+      section {
+        padding: 0.7rem 0.2rem;
+        margin-bottom: 1.2rem;
       }
     }
   </style>
@@ -421,7 +483,10 @@
       <span style="font-variant: small-caps; font-size:0.9em;">Carbon</span>EASE
     </div>
     <div class="subtitle">Empowering Sustainable Futures, One Carbon Credit at a Time</div>
-    <nav>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+      &#9776;
+    </button>
+    <nav id="mainNav">
       <a href="index.html">Home</a>
       <a href="Who we are.html">Who we are</a>
       <a href="impact.html">Make an Impact</a>
@@ -635,6 +700,19 @@
         e.preventDefault();
         alert('Thank you for reaching out to CarbonEASE!');
         e.target.reset();
+      });
+    });
+    // Hamburger nav toggle
+    function toggleNav() {
+      var nav = document.getElementById('mainNav');
+      nav.classList.toggle('open');
+    }
+    // Close nav on link click (mobile)
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.getElementById('mainNav').classList.remove('open');
+        });
       });
     });
   </script>
