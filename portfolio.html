@@ -153,6 +153,9 @@
             justify-content: center;
             flex-wrap: wrap;
             font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            transition: max-height 0.3s;
+            align-items: center;
+            position: relative;
         }
         header nav a {
             color: #fff;
@@ -162,12 +165,25 @@
             border-bottom: 2px solid transparent;
             transition: border 0.2s;
             font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            display: inline-block;
         }
         header nav a.active,
         header nav a:hover {
             border-bottom: 2px solid #1a7f5a;
         }
-        /* Responsive styles */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #1a7f5a;
+            cursor: pointer;
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            z-index: 10;
+            padding: 0.2em 0.5em;
+        }
         @media (max-width: 900px) {
             .container {
                 padding: 16px 6px 12px 6px;
@@ -177,11 +193,37 @@
             }
         }
         @media (max-width: 700px) {
-            header { min-height: 28vh; }
-            header .logo { font-size: 1.3em; }
-            header nav { gap: 14px; font-size: 0.98em; }
-            .container { padding: 8px 2vw; }
-            .login-section { padding: 16px 8px 12px 8px; }
+            .nav-toggle {
+                display: block;
+            }
+            header nav {
+                flex-direction: column;
+                gap: 0.7rem;
+                background: rgba(0, 39, 77, 0.97);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100vw;
+                max-height: 0;
+                overflow: hidden;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+                border-radius: 0 0 18px 18px;
+                transition: max-height 0.3s;
+                margin-bottom: 0;
+            }
+            header nav.open {
+                max-height: 400px;
+                padding-bottom: 1rem;
+            }
+            header nav a {
+                font-size: 1.05rem;
+                padding: 0.7rem 0.5rem;
+                width: 100%;
+                text-align: center;
+            }
+            header {
+                position: relative;
+            }
         }
         @media (max-width: 540px) {
             .container {
@@ -246,7 +288,8 @@
             <span style="font-variant: small-caps; font-size:0.9em;">Carbon</span>EASE
         </div>
         <div class="subtitle">Empowering Sustainable Futures, One Carbon Credit at a Time</div>
-        <nav>
+        <button class="nav-toggle" aria-label="Toggle navigation" id="navToggle">&#9776;</button>
+        <nav id="mainNav">
             <a href="index.html">Home</a>
             <a href="who-we-are.html">Who we are</a>
             <a href="impact.html">Make an Impact</a>
@@ -282,5 +325,26 @@
         <p>Follow us on social media and subscribe to our newsletter for updates on sustainability and carbon credits.</p>
         <div style="margin-top:12px;font-size:0.95em;">&copy; 2024 CarbonEase. All rights reserved.</div>
     </footer>
+    <script>
+        // Hamburger nav toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('navToggle').addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.getElementById('mainNav').classList.toggle('open');
+            });
+            document.querySelectorAll('#mainNav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('mainNav').classList.remove('open');
+                });
+            });
+            document.addEventListener('click', function(e) {
+                var nav = document.getElementById('mainNav');
+                var toggle = document.getElementById('navToggle');
+                if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== toggle) {
+                    nav.classList.remove('open');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
