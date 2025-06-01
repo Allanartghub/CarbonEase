@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | CarbonEase</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #f4f8f7;
+            color: #222;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 950px;
+            margin: 80px auto 0 auto;
+            padding: 32px 24px 24px 24px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        }
+        h1, h2, h3 {
+            color: #1a7f5a;
+            margin-top: 0;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        .cta-section {
+            background: #e6f7f0;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .cta-section h2 {
+            margin-bottom: 10px;
+        }
+        .cta-btn {
+            background: #1a7f5a;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 32px;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: background 0.2s;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        .cta-btn:hover {
+            background: #145c41;
+        }
+        .login-section {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #f7faf9;
+            border-radius: 10px;
+            padding: 28px 24px 18px 24px;
+            box-shadow: 0 2px 8px rgba(26,127,90,0.04);
+        }
+        .login-section label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .login-section input[type="email"],
+        .login-section input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #b2dfc7;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        .login-section button {
+            width: 100%;
+            background: #1a7f5a;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 0;
+            font-size: 1.08em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        .login-section button:hover {
+            background: #145c41;
+        }
+        .signup-link {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 0.98em;
+        }
+        .signup-link a {
+            color: #1a7f5a;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        footer {
+            margin-top: 48px;
+            background: rgba(0, 39, 77, 0.80);
+            color: #fff;
+            text-align: center;
+            padding: 32px 0 18px 0;
+            border-radius: 0 0 16px 16px;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        header {
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(0, 39, 77, 0.80);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: -100px; left: -100px; right: -100px; bottom: -100px;
+            background: radial-gradient(circle at 70% 30%, var(--green-accent, #1a7f5a) 0%, transparent 60%);
+            opacity: 0.15;
+            z-index: 0;
+        }
+        header .logo {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #fff;
+            z-index: 1;
+            margin-bottom: 0.2em;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        header .subtitle {
+            color: #e0f7ef;
+            font-size: 1.15em;
+            margin-bottom: 1.2em;
+            z-index: 1;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        header nav {
+            z-index: 1;
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.08em;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: border 0.2s;
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        }
+        header nav a.active,
+        header nav a:hover {
+            border-bottom: 2px solid #1a7f5a;
+        }
+        @media (max-width: 700px) {
+            header { min-height: 28vh; }
+            header .logo { font-size: 1.3em; }
+            header nav { gap: 14px; font-size: 0.98em; }
+            .container { padding: 12px; }
+            .login-section { padding: 16px 8px 12px 8px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span style="font-variant: small-caps; font-size:0.9em;">Carbon</span>EASE
+        </div>
+        <div class="subtitle">Empowering Sustainable Futures, One Carbon Credit at a Time</div>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="who-we-are.html">Who we are</a>
+            <a href="impact.html">Make an Impact</a>
+            <a href="portfolio.html" class="active">Portfolio</a>
+            <a href="news.html">News and Events</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="cta-section">
+            <h2>Sign Up Today &amp; Make an Impact!</h2>
+            <p>Join CarbonEase to start managing your carbon credits, track your sustainability journey, and contribute to a greener planet.</p>
+            <a href="signup.html"><button class="cta-btn">Create Your Portfolio</button></a>
+        </div>
+        <h1>Log In to Your Portfolio</h1>
+        <div class="login-section">
+            <form>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required autocomplete="username">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password">
+                <button type="submit">Log In</button>
+            </form>
+            <div class="signup-link">
+                Don't have an account? <a href="signup.html">Sign up here</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h3>Stay Connected</h3>
+        <p>Follow us on social media and subscribe to our newsletter for updates on sustainability and carbon credits.</p>
+        <div style="margin-top:12px;font-size:0.95em;">&copy; 2024 CarbonEase. All rights reserved.</div>
+    </footer>
+</body>
+</html>

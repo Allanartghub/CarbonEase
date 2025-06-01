@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us - CarbonEase</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f7f7f7; }
+        nav {
+            background: rgba(0, 39, 77, 0.80); /* Changed to blue to match home.html */
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+            padding: 0.5rem 0;
+        }
+        .navbar-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar-logo {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.4rem;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            padding-left: 1.2rem;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 1.5rem;
+            padding-right: 1.2rem;
+        }
+        .navbar-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .navbar-links a:hover,
+        .navbar-links .active {
+            background: #40916c;
+            color: #fff;
+        }
+        header {
+            background: rgba(0, 39, 77, 0.80);
+            color: #fff;
+            padding: 2rem 1rem 1rem 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 24px rgba(44, 62, 80, 0.07);
+        }
+        h2 { color: #1b4332; margin-top: 0; }
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .contact-form, .contact-details {
+            flex: 1 1 300px;
+        }
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 0.8rem;
+            border: 1px solid #b7e4c7;
+            border-radius: 5px;
+            font-size: 1rem;
+            resize: vertical;
+        }
+        .contact-form button {
+            background: #40916c;
+            color: #fff;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .contact-form button:hover {
+            background: #1b4332;
+        }
+        .contact-details {
+            background: #e9f5ee;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .contact-details h3 {
+            margin-top: 0;
+            color: #40916c;
+        }
+        .social-links {
+            margin-top: 1.2rem;
+            display: flex;
+            gap: 1.2rem;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1b4332;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .social-links a:hover {
+            color: #40916c;
+        }
+        @media (max-width: 800px) {
+            .contact-row { flex-direction: column; }
+        }
+        /* Footer styles to match home.html */
+        footer {
+            background: rgba(0, 39, 77, 0.80);
+            color: #fff;
+            text-align: center;
+            padding: 1.2rem 0 1rem 0;
+            margin-top: 2rem;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="navbar-container">
+            <a href="home.html" class="navbar-logo">CarbonEase</a>
+            <div class="navbar-links">
+                <a href="home.html">Home</a>
+                <a href="about.html">Who We Are</a>
+                <a href="impact.html">Impact</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="news.html">News & Events</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <h1>Contact Us</h1>
+        <p>
+            We'd love to hear from you! Whether you're an individual, a smallholder farmer, or a business seeking corporate partnership opportunities,<br>
+            reach out and let's make a positive impact together.
+        </p>
+    </header>
+    <div class="container">
+        <div class="contact-row">
+            <div class="contact-form">
+                <h2>Send Us a Message</h2>
+                <form>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="text" name="company" placeholder="Company/Organization (optional)">
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-details">
+                <h3>Contact Details</h3>
+                <p>
+                    <strong>Email:</strong> <a href="mailto:info@carbonease.co.ke">info@carbonease.co.ke</a><br>
+                    <strong>Phone:</strong> <a href="tel:+254712345678">+254 712 345 678</a><br>
+                    <strong>Address:</strong> Nairobi, Kenya
+                </p>
+                <h3>Connect with us</h3>
+                <div class="social-links">
+                    <a href="https://twitter.com/carbonease" target="_blank" title="Twitter">
+                        <!-- Twitter SVG icon -->
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195A4.916 4.916 0 0 0 16.616 3c-2.72 0-4.924 2.206-4.924 4.924 0 .386.044.763.127 1.124C7.728 8.807 4.1 6.884 1.671 3.965c-.423.724-.666 1.561-.666 2.475 0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.212c9.057 0 14.009-7.513 14.009-14.009 0-.213-.005-.425-.014-.636A10.012 10.012 0 0 0 24 4.557z"/></svg>
+                        Twitter
+                    </a>
+                    <a href="https://linkedin.com/company/carbonease" target="_blank" title="LinkedIn">
+                        <!-- LinkedIn SVG icon -->
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.89v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://facebook.com/carbonease" target="_blank" title="Facebook">
+                        <!-- Facebook SVG icon -->
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.326v21.348c0 .733.592 1.326 1.325 1.326h11.495v-9.294h-3.128v-3.622h3.128v-2.672c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.326v-21.349c0-.734-.593-1.326-1.326-1.326z"/></svg>
+                        Facebook
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 CarbonEase. All rights reserved.<br>
+        <span style="font-size:1.08rem; color:#b7e4c7; letter-spacing:1px;">Empowering Kenya's Climate Champions</span>
+    </footer>
+    <style>
+        footer {
+            background: rgba(0, 39, 77, 0.80);
+            color: #fff;
+            text-align: center;
+            padding: 1.2rem 0 1rem 0;
+            margin-top: 2rem;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</body>
+</html>
