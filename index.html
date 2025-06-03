@@ -26,6 +26,21 @@
       scroll-behavior: smooth;
       position: relative;
       z-index: 1;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(67,233,123,0.3) transparent;
+      overflow-x: hidden;
+    }
+    /* Chrome, Edge, Safari */
+    ::-webkit-scrollbar {
+      width: 8px;
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(67,233,123,0.3);
+      border-radius: 6px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(67,233,123,0.5);
     }
     .video-bg {
       position: fixed;
@@ -639,9 +654,11 @@
       </form>
     </section>
   </main>
-  <footer>
-    &copy; 2024 CarbonEase. All rights reserved.<br>
-    <span style="font-size:1.08rem; color:#b7e4c7; letter-spacing:1px;">Empowering Kenya's Climate Champions</span>
+  <footer style="z-index:1002; position:relative;">
+    <h3>Stay Connected</h3>
+    <p>Follow us on social media and subscribe to our newsletter for updates on sustainability and carbon credits.</p>
+    <!-- ...add social icons/links as needed... -->
+    <div style="margin-top:12px;font-size:0.95em;">&copy; 2024 CarbonEase. All rights reserved.</div>
   </footer>
   
 <script>
